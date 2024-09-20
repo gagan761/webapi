@@ -1,0 +1,32 @@
+<mat-card class="weather-card">
+  <div class="country-select">
+    <mat-form-field appearance="fill">
+      <mat-label for="city">Select City:</mat-label>
+      <mat-select id="city" (selectionChange)="onCityChange($event)">
+        <mat-option *ngFor="let city of cities" [value]="city.cityName">{{ city.cityName }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+    <div class="header">
+    <div *ngIf="selectedCity">
+      <h2>Weather Forecast for {{ selectedCity.cityName }}</h2>
+   
+      <div *ngIf="currentForecast">
+        <div class="navigation-buttons">
+         
+        <button mat-icon-button (click)="prevDay()" [disabled]="currentDayIndex === 0"><mat-icon>chevron_left</mat-icon></button>
+        <div class="weather-info">
+         
+          <div class="temperature">Temp: {{ currentForecast.temp }}K</div>
+          <div class="humidity"> Humidity: {{ currentForecast.humidity }}% </div>
+        </div>
+        <button mat-icon-button (click)="nextDay()" [disabled]="currentDayIndex === selectedCity.forecast.length - 1"> <mat-icon>chevron_right</mat-icon></button>
+
+        </div>
+        
+        <div class="currentday"> Day:{{ currentForecast.day }} </div>
+      </div>
+    </div>
+  </div>
+  </mat-card>
+   

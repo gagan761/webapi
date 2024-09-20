@@ -1,0 +1,31 @@
+<div *ngIf="avatarUrl">
+    <img [src]="avatarUrl" alt="Repository Owner's Avatar" style="width: 100px; height: 100px; border-radius: 50%;">
+  </div>
+<div *ngIf="gitUrl">
+    <a [href]="gitUrl" target="_blank">GitHub Link</a>
+  </div>
+
+<div *ngIf="repoData">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Properties</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let key of objectKeys(repoData)">
+          <td>{{ key }}</td>
+          <td>
+            <ng-container *ngIf="!isObject(repoData[key])">
+              {{ repoData[key] }}
+            </ng-container>
+            <ng-container *ngIf="isObject(repoData[key])">
+              <pre>{{ repoData[key] | json }}</pre>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

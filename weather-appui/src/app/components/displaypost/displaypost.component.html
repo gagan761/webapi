@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+    <input type ="text" placeholder="Employee Name" name="employeename" formControlName="employeename" >
+    <input type ="text" placeholder="Employee Address" name="employeeaddress" formControlName="employeeaddress">
+    <input type ="text" placeholder="Employee post" name="employeepost" formControlName="employeepost">
+    <button type="submit" >Submit</button>
+    <button type="button" (click)="UpdateFormData()" >Update</button>
+</form>
+
+
+<div *ngIf="userData">
+    <h3>Submitted User Data:</h3>
+    <li *ngFor="let user of userDataList">
+    <label>{{user.name}}</label>
+<label>{{user.address}}</label>
+<label>{{user.post}}</label>
+<button (click)="UpdateForm(user)">Update</button>
+<button>Delete</button>
+    </li>
+  </div>
+
+    
+</body>
+</html>
